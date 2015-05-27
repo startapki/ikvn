@@ -1,3 +1,23 @@
 #home
   h1
     | Ikvn
+
+ul.leagues
+  - @leagues.each do |league|
+    li.league
+      = league.name
+
+      ul.tournaments
+        - league.tournaments.each do |tournament|
+          li.tournament
+            = tournament.name
+
+            ul.seasons
+              - tournament.seasons.each do |season|
+                li.season
+                  = season.name
+
+                  ul.tours
+                    - season.tours.each do |tour|
+                      li.tour
+                        = tour.name

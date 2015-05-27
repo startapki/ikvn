@@ -11,7 +11,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527150921) do
+ActiveRecord::Schema.define(version: 20150527160040) do
+
+  create_table "leagues", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "problems", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "tour_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "problems", ["tour_id"], name: "index_problems_on_tour_id"
+
+  create_table "seasons", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "tournament_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "seasons", ["tournament_id"], name: "index_seasons_on_tournament_id"
+
+  create_table "solutions", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "problem_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "solutions", ["problem_id"], name: "index_solutions_on_problem_id"
+  add_index "solutions", ["user_id"], name: "index_solutions_on_user_id"
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.integer  "league_id",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tournaments", ["league_id"], name: "index_tournaments_on_league_id"
+
+  create_table "tours", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "season_id",   null: false
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tours", ["season_id"], name: "index_tours_on_season_id"
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                          null: false
