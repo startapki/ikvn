@@ -1,0 +1,44 @@
+.panel.panel-primary
+  .panel-heading
+    h3.panel-title
+      'Edit
+      =< resource_name.to_s.humanize
+
+  .panel-body
+    = bootstrap_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, role: "form" } do |f|
+      = f.email_field :email, autofocus: true
+
+      - if resource.pending_reconfirmation?
+        .alert.alert-warning
+          'Currently waiting confirmation for:
+          =< resource.unconfirmed_email
+
+      hr
+
+      = f.password_field :password, autocomplete: "off"
+      = f.password_field :password_confirmation, autocomplete: "off"
+
+      i
+        '(leave blank if you don't want to change it)
+
+      hr
+
+      = f.password_field :current_password, autocomplete: "off"
+
+      i
+        '(we need your current password to confirm your changes)
+
+      hr
+
+      = f.submit "Update"
+
+  .panel-body
+    .well.well-sm
+      p
+        'Unhappy?
+        =< button_to registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-default"
+          'Cancel my account
+
+  .panel-footer
+    = link_to :back
+      'Back
