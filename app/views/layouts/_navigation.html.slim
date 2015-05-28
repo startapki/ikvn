@@ -3,14 +3,16 @@ nav.navbar.navbar-default role="navigation"
     .navbar-header
       button.navbar-toggle type="button" data-toggle="collapse" data-target="#navbar_content"
         span.sr-only
-          'Toggle navigation
+          | Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
       = link_to root_path, class: "navbar-brand"
-        'IKvn
+        | iKvn
 
     #navbar_content.collapse.navbar-collapse
+      = render_breadcrumbs builder: ::BreadcrumbsBuilder
+
       ul.nav.navbar-nav.navbar-right
         - if current_user.present?
           li.dropdown
@@ -20,15 +22,15 @@ nav.navbar.navbar-default role="navigation"
             ul.dropdown-menu
               li
                 = link_to edit_user_registration_path
-                  'Edit profile
+                  | Edit profile
               li.divider
               li
                 = link_to destroy_user_session_path, method: :delete
-                  'Logout
+                  | Logout
         - else
           li
             = link_to new_user_session_path
-              'Sign in
+              | Sign in
           li
             = link_to new_user_registration_path
-              'Sign up
+              | Sign up

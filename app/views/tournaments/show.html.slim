@@ -1,0 +1,37 @@
+#tournament
+  h1
+    = tournament.name
+
+  =m tournament.description
+
+  ul.seasons
+    - if can? :create, Season
+      li.season.panel.panel-default.new.inactive
+        .panel-heading
+          = link_to new_season_path(tournament_id: tournament.id)
+            i.glyphicon.glyphicon-plus
+            =<t 'season.new'
+
+    - seasons.each do |season|
+      li.season.panel.panel-default class=(season.state)
+        .panel-heading
+          = season.name
+
+          = actions_for season, class: 'pull-right'
+
+        .panel-body
+          =m season.description
+
+          ul.tours
+            - if can? :create, Tour
+              li.tour.new.draft
+                = link_to new_tour_path(season_id: season.id)
+                  i.glyphicon.glyphicon-plus
+                  =<t 'tour.new'
+
+            - season.tours.accessible_by(current_ability, :read).decorate.each do |tour|
+              li.tour class=(tour.state)
+                = link_to tour.name, tour, class: 'name'
+
+                = actions_for tour, class: 'pull-right'
+

@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150527160040) do
   end
 
   create_table "problems", force: :cascade do |t|
-    t.string   "title"
+    t.string   "name"
     t.text     "description"
     t.integer  "tour_id",     null: false
     t.datetime "created_at",  null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150527160040) do
     t.integer  "season_id",   null: false
     t.datetime "started_at"
     t.datetime "finished_at"
+    t.datetime "reviewed_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -74,14 +75,15 @@ ActiveRecord::Schema.define(version: 20150527160040) do
   add_index "tours", ["season_id"], name: "index_tours_on_season_id"
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.boolean  "admin",                  default: false, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"

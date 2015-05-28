@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users
 
-  root to: 'home#index'
+  resources :seasons, except: :index
+
+  resources :tours, except: :index
+
+  root to: 'tournaments#show'
 end

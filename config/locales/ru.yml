@@ -1,0 +1,30 @@
+ru:
+  question:
+    are_you_sure: 'Вы уверены?'
+  header:
+    new: 'Создание'
+    edit: 'Редактирование'
+  action:
+    new: 'Создать'
+    edit: 'Редактировать'
+    destroy: 'Удалить'
+  flash:
+    not_authorized: 'Там абсолютно ничего интересного'
+  tour:
+    new: 'Новый Тур'
+    state:
+      draft: 'черновик'
+      scheduled_in: 'запланирован через'
+      in_progress: 'активен'
+      in_progress_for_next: 'активен еще'
+      on_review: 'на проверке'
+      on_review_for_next: 'на проверке на следующих'
+      completed_in: 'завершен уже'
+
+  season:
+    new: 'Новый сезон'
+
+  model:
+    created: 'Успешно создано.'
+    updated: 'Успешно обновлено.'
+    destroy: 'Успешно удалено.'

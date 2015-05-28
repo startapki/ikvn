@@ -12,14 +12,19 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
-
+gem 'rails-bootstrap-markdown'
+gem 'redcarpet'
 gem 'slim-rails'
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
+gem 'draper'
 
 gem 'devise'
-gem 'inherited_resources'
+gem 'cancancan'
 gem 'russian'
+gem 'breadcrumbs_on_rails'
 
 group :development do
   gem 'pry-rails'

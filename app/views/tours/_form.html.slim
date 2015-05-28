@@ -1,0 +1,5 @@
+= bootstrap_form_for tour do |f|
+  = f.text_field :name
+  = f.text_area :description, data: { provide: 'markdown' }
+  = f.hidden_field :season_id
+  = f.submit

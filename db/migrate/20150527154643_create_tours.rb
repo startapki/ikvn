@@ -8,6 +8,7 @@ class CreateTours < ActiveRecord::Migration
 
       t.datetime :started_at
       t.datetime :finished_at
+      t.datetime :reviewed_at
 
       t.timestamps null: false
     end

@@ -1,0 +1,12 @@
+ru:
+  activerecord:
+    models:
+      tour:
+        one: 'Тур'
+        few: 'Туров'
+        many: 'Туров'
+        other: 'Туры'
+    attributes:
+      tour:
+        name: 'Имя'
+        description: 'Описание'

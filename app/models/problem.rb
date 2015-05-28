@@ -3,5 +3,5 @@ class Problem < ActiveRecord::Base
 
   has_many :solutions
 
-  validates :title, :description, :tour, presence: true
+  validates :name, :description, :tour, presence: true
 end
