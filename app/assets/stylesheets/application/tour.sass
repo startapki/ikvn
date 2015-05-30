@@ -1,0 +1,47 @@
+$draft-color: $gray-light
+$scheduled-color: $draft-color
+$started-color: $brand-success
+$finished-color: $brand-warning
+$completed-color: $brand-primary
+
+#seasons .season
+  .tours
+    .tour
+      padding: 4px
+      height: 31px
+      line-height: 23px
+      margin: 1px 0
+      &.draft, &.scheduled
+        border: 1px dashed $gray-light
+      &.draft
+        .name
+          color: $draft-color
+      &.scheduled
+        .name
+          color: $scheduled-color
+      &.started
+        .name
+          color: $started-color
+      &.finished
+        .name
+          color: $finished-color
+      &.completed
+        .name
+          color: $completed-color
+
+#tour
+  &.draft
+    small
+      color: $draft-color
+  &.scheduled
+    small
+      color: $scheduled-color
+  &.started
+    small
+      color: $started-color
+  &.finished
+    small
+      color: $finished-color
+  &.completed
+    small
+      color: $completed-color

@@ -1,9 +1,13 @@
 class ToursController < ApplicationController
-  load_and_authorize_resource except: [:index, :new]
+  load_and_authorize_resource except: :new
+
+  decorates_assigned :tour
 
   before_action :prepare_breadcrumbs, only: [:show, :edit]
 
   def show
+    @participation = Participation.find_or_initialize_by(user: current_user,
+                                                         season: @tour.season)
   end
 
   def new

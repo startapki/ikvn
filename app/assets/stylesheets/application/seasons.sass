@@ -1,0 +1,12 @@
+#seasons
+  .season
+    &.active
+      @extend .panel-primary
+    &.inactive
+      color: $gray-light
+      border: 1px dashed $gray-light
+      .panel-heading
+        color: $gray-light
+    &:not(.new)
+      .panel-heading
+        border-bottom: 1px dashed $gray-light

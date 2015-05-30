@@ -1,4 +1,13 @@
-h3
- = @tour.name
+#tour class=(tour.state)
+  .jumbotron
+    h1
+      = tour.name
 
-=m @tour.description
+    =m tour.description
+
+    - if @participation.new_record? && can?(:create, @participation)
+      p
+        = render 'participations/form', participation: @participation, label: t('season.participate')
+
+  #problems
+    = render tour.problems

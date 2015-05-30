@@ -1,12 +1,12 @@
 .panel.panel-primary
   .panel-heading
     h3.panel-title
-      'Resend confirmation instructions
+      | Resend confirmation instructions
 
   .panel-body
-    = bootstrap_form_for resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, role: "form" } do |f|
+    = bootstrap_form_for resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, role: 'form' } do |f|
       = f.email_field :email, autofocus: true
-      = f.submit "Resend confirmation instructions"
+      = f.submit 'Resend confirmation instructions'
 
   .panel-footer
-    = render "devise/shared/links"
+    = render 'devise/shared/links'

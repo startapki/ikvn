@@ -1,0 +1,9 @@
+.problem
+  .panel.panel-default
+    .panel-heading
+      = problem.name
+
+      = actions_for problem, class: 'pull-right'
+    .panel-body
+      .content
+        =m problem.content

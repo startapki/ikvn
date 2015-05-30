@@ -1,0 +1,4 @@
+= bootstrap_form_for problem do |f|
+  = f.text_area :content, data: { provide: 'markdown' }
+  = f.hidden_field :tour_id
+  = f.submit

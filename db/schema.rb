@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527160040) do
+ActiveRecord::Schema.define(version: 20150530155235) do
 
   create_table "leagues", force: :cascade do |t|
     t.string   "name",        null: false
@@ -20,12 +20,27 @@ ActiveRecord::Schema.define(version: 20150527160040) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "leagues", ["name"], name: "index_leagues_on_name", unique: true
+
+  create_table "participations", force: :cascade do |t|
+    t.string   "role",       default: "author"
+    t.integer  "user_id",                       null: false
+    t.integer  "season_id",                     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "participations", ["role", "user_id", "season_id"], name: "index_participations_on_role_and_user_id_and_season_id", unique: true
+  add_index "participations", ["season_id"], name: "index_participations_on_season_id"
+  add_index "participations", ["user_id"], name: "index_participations_on_user_id"
+
   create_table "problems", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "tour_id",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "content"
+    t.integer  "tour_id",                     null: false
+    t.integer  "solutions_count", default: 0, null: false
+    t.integer  "position"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "problems", ["tour_id"], name: "index_problems_on_tour_id"
@@ -42,14 +57,15 @@ ActiveRecord::Schema.define(version: 20150527160040) do
 
   create_table "solutions", force: :cascade do |t|
     t.text     "content"
-    t.integer  "problem_id", null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "problem_id",       null: false
+    t.integer  "participation_id", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
+  add_index "solutions", ["participation_id"], name: "index_solutions_on_participation_id"
+  add_index "solutions", ["problem_id", "participation_id"], name: "index_solutions_on_problem_id_and_participation_id", unique: true
   add_index "solutions", ["problem_id"], name: "index_solutions_on_problem_id"
-  add_index "solutions", ["user_id"], name: "index_solutions_on_user_id"
 
   create_table "tournaments", force: :cascade do |t|
     t.string   "name",        null: false

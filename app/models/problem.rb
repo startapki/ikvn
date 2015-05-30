@@ -1,7 +1,15 @@
 class Problem < ActiveRecord::Base
+  default_scope -> { order(position: :asc) }
+
   belongs_to :tour
 
-  has_many :solutions
+  has_many :solutions, dependent: :restrict_with_exception
 
-  validates :name, :description, :tour, presence: true
+  acts_as_list scope: :tour
+
+  validates :content, :tour, presence: true
+
+  def has_solutions?
+    solutions.size > 0
+  end
 end

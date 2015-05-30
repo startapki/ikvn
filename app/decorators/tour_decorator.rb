@@ -1,6 +1,8 @@
 class TourDecorator < Draper::Decorator
   delegate_all
 
+  decorates_association :problems
+
   def name
     [source.name, name_hint].compact.join(' ').try(:html_safe)
   end

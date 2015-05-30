@@ -2,6 +2,7 @@ class Season < ActiveRecord::Base
   belongs_to :tournament
 
   has_many :tours, dependent: :destroy
+  has_many :participations, dependent: :destroy
 
   scope :active, -> { joins(:tours).merge(Tour.active).uniq }
 

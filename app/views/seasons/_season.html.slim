@@ -1,0 +1,14 @@
+.season.panel.panel-default class=(season.state)
+  .panel-heading
+    = season.name
+
+    = actions_for season, class: 'pull-right'
+
+  .panel-body
+    =m season.description
+
+    .tours
+      - if can? :create, Tour
+        = season.new_tour
+
+      = render season.tours.accessible_by(current_ability, :read).decorate

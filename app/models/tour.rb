@@ -3,7 +3,7 @@ class Tour < ActiveRecord::Base
 
   belongs_to :season
 
-  has_many :problems
+  has_many :problems, dependent: :destroy
 
   scope :active, -> { where('started_at <= ?', Time.now) }
 

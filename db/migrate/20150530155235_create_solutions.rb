@@ -4,9 +4,11 @@ class CreateSolutions < ActiveRecord::Migration
       t.text :content
 
       t.references :problem, null: false, index: true, foreign_key: true
-      t.references :user, null: false, index: true, foreign_key: true
+      t.references :participation, null: false, index: true, foreign_key: true
 
       t.timestamps null: false
     end
+
+    add_index :solutions, [:problem_id, :participation_id], unique: true
   end
 end

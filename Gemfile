@@ -25,6 +25,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'russian'
 gem 'breadcrumbs_on_rails'
+gem 'acts_as_list'
 
 group :development do
   gem 'pry-rails'
@@ -39,6 +40,8 @@ group :development do
 
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  gem 'bullet'
 
   gem 'letter_opener'
 end

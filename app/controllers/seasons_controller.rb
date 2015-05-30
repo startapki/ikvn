@@ -1,10 +1,7 @@
 class SeasonsController < ApplicationController
   load_and_authorize_resource except: [:index, :new]
 
-  before_action :prepare_breadcrumbs, only: [:show, :edit]
-
-  def show
-  end
+  before_action :prepare_breadcrumbs, only: :edit
 
   def new
     @season = Season.new(tournament_id: params[:tournament_id])
@@ -45,6 +42,6 @@ class SeasonsController < ApplicationController
 
   def prepare_breadcrumbs
     add_breadcrumb @season.tournament.name, :root_path
-    add_breadcrumb (@season.name || t('season.new')), @season
+    add_breadcrumb @season.decorate.name, @season
   end
 end

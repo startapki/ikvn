@@ -1,4 +1,4 @@
-User.create!([{
+users = User.create!([{
   email: 'admin@example.com',
   password: 'password',
   password_confirmation: 'password',
@@ -22,7 +22,7 @@ Tournament.create!([{
   league: League.first
 }])
 
-Season.create!([{
+seasons = Season.create!([{
   name: 'Первый сезон',
   description: Faker::Lorem.paragraph,
   tournament: Tournament.first
@@ -32,7 +32,7 @@ Season.create!([{
   tournament: Tournament.first
 }])
 
-Tour.create!([{
+tours = Tour.create!([{
   name: 'Первый тур',
   description: Faker::Lorem.paragraph,
   season: Season.first,
@@ -67,4 +67,26 @@ Tour.create!([{
   started_at: nil,
   finished_at: nil,
   reviewed_at: nil
+}])
+
+problems = Problem.create!([{
+  content: 'Hello?',
+  tour: tours[2]
+}, {
+  content: 'World?',
+  tour: tours[2]
+}, {
+  content: 'Outdated?',
+  tour: tours[1]
+}])
+
+participations = Participation.create!([{
+  season: seasons.first,
+  user: users.last
+}])
+
+Solution.create!([{
+  participation: participations.first,
+  problem: problems.last,
+  content: 'Solution!'
 }])

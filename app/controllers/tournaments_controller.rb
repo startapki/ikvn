@@ -5,7 +5,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.accessible_by(current_ability, :read)
                             .first
 
-    @seasons = @tournament.seasons.includes(:tours)
+    @seasons = @tournament.seasons
                           .accessible_by(current_ability, :read)
                           .order(created_at: :desc)
 

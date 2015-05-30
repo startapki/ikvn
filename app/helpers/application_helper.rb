@@ -18,4 +18,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def icon(name)
+    content_tag(:i, '', class: "glyphicon glyphicon-#{name}")
+  end
 end

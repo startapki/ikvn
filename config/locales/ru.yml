@@ -10,6 +10,10 @@ ru:
     destroy: 'Удалить'
   flash:
     not_authorized: 'Там абсолютно ничего интересного'
+
+  tournament:
+    active_tour: 'Активный тур'
+
   tour:
     new: 'Новый Тур'
     state:
@@ -23,6 +27,16 @@ ru:
 
   season:
     new: 'Новый сезон'
+    participate: 'Участвовать'
+
+  participation:
+    created: 'Участие подтверждено'
+    not_created: 'Нелья так просто взять и поучаствовать в этом турнире...'
+    destroyed: 'Участие отозвано'
+
+  problem:
+    new: 'Новая задача'
+    name: 'Задача №%{position}'
 
   model:
     created: 'Успешно создано.'
