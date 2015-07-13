@@ -50,6 +50,6 @@ class ToursController < ApplicationController
   def prepare_breadcrumbs
     add_breadcrumb @tour.season.tournament.name, :root_path
     add_breadcrumb @tour.season.name, :root_path
-    add_breadcrumb (@tour.name || t('tour.new')), @tour
+    add_breadcrumb @tour.name || t('tour.new'), @tour
   end
 end

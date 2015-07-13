@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.3'
 
 gem 'sqlite3'
 
@@ -42,27 +42,16 @@ group :development do
   gem 'binding_of_caller'
 
   gem 'bullet'
+  gem 'rubocop', require: false
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
+  gem 'immigrant'
+  gem 'coffeelint'
 
   gem 'letter_opener'
 end
 
 group :development, :test do
-  # gem 'rspec-rails', '~> 3.0'
-  # gem 'email_spec'
-
-  # gem 'cucumber-rails', require: false
-
   gem 'spring'
-  # gem 'spring-commands-rspec'
-  # gem 'spring-commands-cucumber'
-
-  # gem 'capybara'
-  # gem 'poltergeist'
-  # gem 'launchy'
-
-  # gem 'database_cleaner'
-  # gem 'factory_girl_rails'
   gem 'faker'
-
-  # gem 'simplecov', require: false
 end

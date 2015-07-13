@@ -26,7 +26,7 @@ class Ability
       cannot :destroy, Tour, &:active?
 
       can :manage, Problem
-      cannot :destroy, Problem, &:has_solutions?
+      cannot :destroy, Problem, &:solutions?
 
       can :manage, Participation
     else

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   include AuthenticationRedirect
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::AccessDenied do
     redirect_to root_url, alert: t('flash.not_authorized')
   end
 end

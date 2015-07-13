@@ -9,7 +9,7 @@ class Problem < ActiveRecord::Base
 
   validates :content, :tour, presence: true
 
-  def has_solutions?
+  def solutions?
     solutions.size > 0
   end
 end
