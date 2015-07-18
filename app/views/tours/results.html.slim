@@ -1,0 +1,23 @@
+#tour.results class=(tour.state)
+  .jumbotron
+    h1
+      =t 'tour.results'
+    h2
+      = tour.name
+
+.panel.panel-default
+  .panel-body
+    table.table
+      thead
+        tr
+          th
+            =t 'result.user'
+          th
+            =t 'result.score'
+      tbody
+        - @users.each do |user|
+          tr
+            td
+              = user.email
+            td
+              = tour.calculate_score_for(user)

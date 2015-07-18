@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :seasons, except: [:index, :show]
 
-  resources :tours, except: :index
+  resources :tours, except: :index do
+    member do
+      get :results
+    end
+  end
 
   resources :problems, except: [:index, :show]
 

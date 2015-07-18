@@ -1,9 +1,10 @@
 class ToursController < ApplicationController
-  load_and_authorize_resource except: :new
+  load_and_authorize_resource except: [:new, :results]
+  load_resource only: [:results]
 
   decorates_assigned :tour
 
-  before_action :prepare_breadcrumbs, only: [:show, :edit]
+  before_action :prepare_breadcrumbs, only: [:show, :edit, :results]
 
   helper_method :current_participation
 
@@ -41,6 +42,12 @@ class ToursController < ApplicationController
     @tour.destroy
 
     redirect_to root_url, notice: t('model.destroyed')
+  end
+
+  def results
+    @users = User.joins(:participations)
+                 .where(role: User.roles[:user])
+                 .where(participations: { season: @tour.season })
   end
 
   private
