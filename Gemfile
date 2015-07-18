@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
 gem 'rails', '4.2.3'
 
 gem 'sass-rails', '~> 5.0'
@@ -27,6 +29,8 @@ gem 'cancancan'
 gem 'russian'
 gem 'breadcrumbs_on_rails'
 gem 'acts_as_list'
+
+gem 'faker'
 
 group :development do
   gem 'pry-rails'
@@ -56,7 +60,6 @@ end
 
 group :development, :test do
   gem 'spring'
-  gem 'faker'
   gem 'sqlite3'
 end
 
