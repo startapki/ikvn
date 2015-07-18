@@ -10,6 +10,7 @@ Dir.chdir APP_ROOT do
   system 'bundle check || bundle install'
 
   puts "\n== Preparing database =="
+  system 'cp -n config/database.yml.example config/database.yml'
   system 'bin/rake db:setup'
 
   puts "\n== Removing old logs and tempfiles =="
