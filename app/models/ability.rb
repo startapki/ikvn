@@ -39,7 +39,9 @@ class Ability
       can :read, Solution
       can :manage, Score
     elsif !user.admin?
-      can :manage, Solution
+      can :manage, Solution do |solution|
+        solution.problem.tour.solutionable?
+      end
     end
   end
 end

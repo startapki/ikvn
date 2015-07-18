@@ -7,7 +7,7 @@
     .panel-body
       .content
         =m problem.content
-        - if can? :create, Solution.new
+        - if can? :create, Solution.new(problem: problem)
           - if solution = problem.solution_for(current_participation)
           	.well
               = actions_for solution, class: 'pull-right'
