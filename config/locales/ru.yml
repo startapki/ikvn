@@ -28,7 +28,7 @@ ru:
       in_progress_for_next: 'активен еще'
       on_review: 'на проверке'
       on_review_for_next: 'на проверке на следующих'
-      completed_in: 'завершен уже'
+      completed_in: 'завершен'
 
   season:
     new: 'Новый сезон'

@@ -21,6 +21,7 @@ class Ability
       cannot :destroy, Season, &:active?
 
       can :manage, Tour
+      can :view_results, Tour
       cannot :destroy, Tour, &:active?
 
       can :manage, Problem
@@ -31,6 +32,9 @@ class Ability
     else
       can :read, Season, Season.active, &:active?
       can :read, Tour, Tour.active, &:active?
+      can :view_results, Tour do |tour|
+        tour.finished?
+      end
     end
 
     if user.judge?
