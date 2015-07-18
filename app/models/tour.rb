@@ -1,6 +1,4 @@
 class Tour < ActiveRecord::Base
-  default_scope -> { order(started_at: :desc) }
-
   belongs_to :season
 
   has_many :problems, dependent: :destroy

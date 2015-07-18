@@ -11,4 +11,4 @@
       - if can? :create, Tour
         = season.new_tour
 
-      = render season.tours.accessible_by(current_ability, :read).decorate
+      = render season.tours.accessible_by(current_ability, :read).order(started_at: :desc).decorate
