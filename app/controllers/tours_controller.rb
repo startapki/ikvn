@@ -45,6 +45,7 @@ class ToursController < ApplicationController
   end
 
   def results
+    authorize! :view_results, tour
     @users = User.joins(:participations)
                  .where(role: User.roles[:user])
                  .where(participations: { season: @tour.season })

@@ -6,6 +6,9 @@
 
     =m tour.description
 
+    - if tour.finished?
+      = link_to t('tour.results'), results_tour_path(tour), class: 'btn btn-primary btn-lg'
+
     - if @participation.new_record? && can?(:create, @participation)
       p
         = render 'participations/form', participation: @participation, label: t('season.participate')
