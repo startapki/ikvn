@@ -6,5 +6,5 @@
 ## Setup
 
 ```
-bin/rake db:setup
+bin/setup
 ```
