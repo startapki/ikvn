@@ -11,4 +11,7 @@
         = render 'participations/form', participation: @participation, label: t('season.participate')
 
   #problems
+    - if can? :create, Problem
+      = tour.new_problem
+
     = render tour.problems

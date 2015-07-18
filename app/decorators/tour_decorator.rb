@@ -25,6 +25,18 @@ class TourDecorator < Draper::Decorator
     end
   end
 
+  def new_problem
+    h.content_tag(:div, class: 'problem new draft panel panel-default') do
+      h.content_tag(:div, class: 'panel-heading') do
+        h.link_to(h.new_problem_path(tour_id: id)) do
+          h.concat h.icon('plus')
+          h.concat ' '
+          h.concat h.t('problem.new')
+        end
+      end
+    end
+  end
+
   private
 
   def name_hint
