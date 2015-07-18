@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150718133707) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "leagues", force: :cascade do |t|
     t.string   "name",        null: false
     t.text     "description"
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "leagues", ["name"], name: "index_leagues_on_name", unique: true
+  add_index "leagues", ["name"], name: "index_leagues_on_name", unique: true, using: :btree
 
   create_table "participations", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "participations", ["season_id"], name: "index_participations_on_season_id"
-  add_index "participations", ["user_id"], name: "index_participations_on_user_id"
+  add_index "participations", ["season_id"], name: "index_participations_on_season_id", using: :btree
+  add_index "participations", ["user_id"], name: "index_participations_on_user_id", using: :btree
 
   create_table "problems", force: :cascade do |t|
     t.text     "content"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "problems", ["tour_id"], name: "index_problems_on_tour_id"
+  add_index "problems", ["tour_id"], name: "index_problems_on_tour_id", using: :btree
 
   create_table "scores", force: :cascade do |t|
     t.integer "value",            default: 0
@@ -49,8 +52,8 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.integer "solution_id"
   end
 
-  add_index "scores", ["participation_id"], name: "index_scores_on_participation_id"
-  add_index "scores", ["solution_id"], name: "index_scores_on_solution_id"
+  add_index "scores", ["participation_id"], name: "index_scores_on_participation_id", using: :btree
+  add_index "scores", ["solution_id"], name: "index_scores_on_solution_id", using: :btree
 
   create_table "seasons", force: :cascade do |t|
     t.string   "name"
@@ -60,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "seasons", ["tournament_id"], name: "index_seasons_on_tournament_id"
+  add_index "seasons", ["tournament_id"], name: "index_seasons_on_tournament_id", using: :btree
 
   create_table "solutions", force: :cascade do |t|
     t.text     "content"
@@ -70,9 +73,9 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "solutions", ["participation_id"], name: "index_solutions_on_participation_id"
-  add_index "solutions", ["problem_id", "participation_id"], name: "index_solutions_on_problem_id_and_participation_id", unique: true
-  add_index "solutions", ["problem_id"], name: "index_solutions_on_problem_id"
+  add_index "solutions", ["participation_id"], name: "index_solutions_on_participation_id", using: :btree
+  add_index "solutions", ["problem_id", "participation_id"], name: "index_solutions_on_problem_id_and_participation_id", unique: true, using: :btree
+  add_index "solutions", ["problem_id"], name: "index_solutions_on_problem_id", using: :btree
 
   create_table "tournaments", force: :cascade do |t|
     t.string   "name",        null: false
@@ -82,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "tournaments", ["league_id"], name: "index_tournaments_on_league_id"
+  add_index "tournaments", ["league_id"], name: "index_tournaments_on_league_id", using: :btree
 
   create_table "tours", force: :cascade do |t|
     t.string   "name"
@@ -95,7 +98,7 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "tours", ["season_id"], name: "index_tours_on_season_id"
+  add_index "tours", ["season_id"], name: "index_tours_on_season_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "role",                   default: 0,  null: false
@@ -116,8 +119,18 @@ ActiveRecord::Schema.define(version: 20150718133707) do
     t.datetime "confirmation_sent_at"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "participations", "seasons"
+  add_foreign_key "participations", "users"
+  add_foreign_key "problems", "tours"
+  add_foreign_key "scores", "participations"
+  add_foreign_key "scores", "solutions"
+  add_foreign_key "seasons", "tournaments"
+  add_foreign_key "solutions", "participations"
+  add_foreign_key "solutions", "problems"
+  add_foreign_key "tournaments", "leagues"
+  add_foreign_key "tours", "seasons"
 end

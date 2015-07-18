@@ -1,12 +1,14 @@
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: utf8
+  username: postgres
+  password:
+  host: localhost
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: ikvn_develop
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: ikvn_test
