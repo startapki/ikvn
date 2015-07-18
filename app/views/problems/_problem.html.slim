@@ -12,14 +12,15 @@
           	= solution.content
           -else
             =link_to 'Answer', new_solution_path(participation_id: @participation.id, problem_id: problem.id)
-        .judgement
-          - problem.solutions.each do |solution|
-            =m solution.content
-            = form_for solution.score_for(current_participation), html: { class: 'form-horizontal' } do |f|
-              = f.hidden_field :solution_id
-              = f.hidden_field :participation_id
-              .form-group
-                - (0...4).each do |i|
-                  = f.label "value_#{i}", class: 'radio-inline' do
-                    = f.radio_button :value, i, :onclick => "this.form.submit();"
-                    = i
+        - if can? :manage, Score.new
+          .judgement
+            - problem.solutions.each do |solution|
+              =m solution.content
+              = form_for solution.score_for(current_participation), html: { class: 'form-horizontal' } do |f|
+                = f.hidden_field :solution_id
+                = f.hidden_field :participation_id
+                .form-group
+                  - (0...4).each do |i|
+                    = f.label "value_#{i}", class: 'radio-inline' do
+                      = f.radio_button :value, i, :onclick => "this.form.submit();"
+                      = i
