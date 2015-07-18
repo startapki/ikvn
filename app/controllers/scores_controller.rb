@@ -3,11 +3,13 @@ class ScoresController < ApplicationController
 
   def create
     @score.save!
+
     redirect_to @score.solution.problem.tour
   end
 
   def update
-    @score.save
+    @score.update(score_params)
+
     redirect_to @score.solution.problem.tour
   end
 
