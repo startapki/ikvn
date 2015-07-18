@@ -5,12 +5,12 @@ class Tour < ActiveRecord::Base
 
   has_many :problems, dependent: :destroy
 
-  scope :active, -> { where('started_at <= ?', Time.now) }
+  scope :active, -> { where('started_at <= ?', Time.zone.now) }
 
   validates :season, presence: true
   validates :name, uniqueness: { scope: :season }, allow_nil: true
 
   def active?
-    started_at.present? && started_at <= Time.now
+    started_at.present? && started_at <= Time.zone.now
   end
 end

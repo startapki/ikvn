@@ -2,19 +2,19 @@ users = User.create!([{
   email: 'admin@example.com',
   password: 'password',
   password_confirmation: 'password',
-  confirmed_at: Time.now,
+  confirmed_at: Time.zone.now,
   role: User.roles[:admin]
 }, {
   email: 'judge@example.com',
   password: 'password',
   password_confirmation: 'password',
-  confirmed_at: Time.now,
+  confirmed_at: Time.zone.now,
   role: User.roles[:judge]
 }, {
   email: 'user@example.com',
   password: 'password',
   password_confirmation: 'password',
-  confirmed_at: Time.now
+  confirmed_at: Time.zone.now
 }])
 
 League.create!([{
@@ -42,30 +42,30 @@ tours = Tour.create!([{
   name: 'Первый тур',
   description: Faker::Lorem.paragraph,
   season: Season.first,
-  started_at: Time.now - 11.days,
-  finished_at: Time.now - 5.days,
-  reviewed_at: Time.now
+  started_at: Time.zone.now - 11.days,
+  finished_at: Time.zone.now - 5.days,
+  reviewed_at: Time.zone.now
 }, {
   name: 'Второй тур',
   description: Faker::Lorem.paragraph,
   season: Season.first,
-  started_at: Time.now - 3.days,
-  finished_at: Time.now,
-  reviewed_at: Time.now + 4.days
+  started_at: Time.zone.now - 3.days,
+  finished_at: Time.zone.now,
+  reviewed_at: Time.zone.now + 4.days
 }, {
   name: 'Третий тур',
   description: Faker::Lorem.paragraph,
   season: Season.first,
-  started_at: Time.now,
-  finished_at: Time.now + 6.days,
-  reviewed_at: Time.now + 14.days
+  started_at: Time.zone.now,
+  finished_at: Time.zone.now + 6.days,
+  reviewed_at: Time.zone.now + 14.days
 }, {
   name: 'Четвертый тур',
   description: Faker::Lorem.paragraph,
   season: Season.first,
-  started_at: Time.now + 7.days,
-  finished_at: Time.now + 15.days,
-  reviewed_at: Time.now + 21.days
+  started_at: Time.zone.now + 7.days,
+  finished_at: Time.zone.now + 15.days,
+  reviewed_at: Time.zone.now + 21.days
 }, {
   name: 'Первый тур',
   description: Faker::Lorem.paragraph,
