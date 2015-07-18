@@ -9,7 +9,9 @@
         =m problem.content
         - if can? :create, Solution.new
           - if solution = problem.solution_for(current_participation)
-          	= solution.content
+          	.well
+              = actions_for solution, class: 'pull-right'
+              = solution.content
           -else
             =link_to 'Answer', new_solution_path(participation_id: current_participation.id, problem_id: problem.id)
         - if can? :manage, Score.new
