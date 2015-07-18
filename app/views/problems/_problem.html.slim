@@ -7,3 +7,8 @@
     .panel-body
       .content
         =m problem.content
+        - if can? :create, Solution.new
+          - if solution = Solution.find_by(problem: problem, participation: @participation)
+          	= solution.content
+          -else
+            =link_to 'Answer', new_solution_path(participation_id: @participation.id, problem_id: problem.id)

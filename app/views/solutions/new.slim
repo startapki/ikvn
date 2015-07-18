@@ -1,0 +1,5 @@
+= bootstrap_form_for Solution.new do |f|
+  = f.hidden_field :participation_id, value: params[:participation_id]
+  = f.hidden_field :problem_id, value: params[:problem_id]
+  = f.text_area :content, data: { provide: 'markdown' }
+  = f.submit

@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   resources :participations, only: [:create, :update]
 
+  resources :solutions, only: [:create, :update, :new]
+
   root to: 'tournaments#show'
 end
