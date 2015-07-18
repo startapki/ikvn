@@ -1,0 +1,12 @@
+{
+  "name":"ikvn",
+  "scripts":{
+    "postdeploy":"bin/setup"
+  },
+  "env":{
+    "SECRET_KEY_BASE":{
+      "required":true
+    }
+  },
+  "addons":[]
+}
