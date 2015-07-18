@@ -13,3 +13,7 @@ Style/Documentation:
 
 Metrics/LineLength:
   Max: 80
+
+Metrics/LineLength:
+  Exclude:
+    - config/initializers/devise.rb
