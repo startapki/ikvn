@@ -1,12 +1,31 @@
 ru:
   activerecord:
     models:
+      season:
+        one: 'сезон'
+        few: 'сезонов'
+        many: 'сезонов'
+        other: 'сезоны'
       tour:
-        one: 'Тур'
-        few: 'Туров'
-        many: 'Туров'
-        other: 'Туры'
+        one: 'тур'
+        few: 'туров'
+        many: 'туров'
+        other: 'туры'
+      tournament:
+        one: 'турнир'
+        few: 'турниров'
+        many: 'турниров'
+        other: 'турниры'
     attributes:
+      season:
+        name: 'Имя'
+        description: 'Описание'
       tour:
+        name: 'Имя'
+        started_at: 'Старт приема ответов'
+        finished_at: 'Окончание приема ответов'
+        reviewed_at: 'Окончание оценивания'
+        description: 'Описание'
+      tournament:
         name: 'Имя'
         description: 'Описание'
