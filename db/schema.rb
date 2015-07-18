@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530155235) do
+ActiveRecord::Schema.define(version: 20150718133707) do
 
   create_table "leagues", force: :cascade do |t|
     t.string   "name",        null: false
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20150530155235) do
   end
 
   add_index "problems", ["tour_id"], name: "index_problems_on_tour_id"
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "value",            default: 0
+    t.integer "participation_id"
+    t.integer "solution_id"
+  end
+
+  add_index "scores", ["participation_id"], name: "index_scores_on_participation_id"
+  add_index "scores", ["solution_id"], name: "index_scores_on_solution_id"
 
   create_table "seasons", force: :cascade do |t|
     t.string   "name"
