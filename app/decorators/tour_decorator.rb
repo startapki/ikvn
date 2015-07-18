@@ -10,17 +10,17 @@ class TourDecorator < Draper::Decorator
   def state
     if started_at.nil?
       'draft'
-    elsif started_at <= Time.now && finished_at.nil? && reviewed_at.nil?
+    elsif started_at <= Time.zone.now && finished_at.nil? && reviewed_at.nil?
       'started'
-    elsif finished_at <= Time.now && reviewed_at.nil?
+    elsif finished_at <= Time.zone.now && reviewed_at.nil?
       'finished'
-    elsif reviewed_at <= Time.now
+    elsif reviewed_at <= Time.zone.now
       'completed'
-    elsif Time.now < started_at
+    elsif Time.zone.now < started_at
       'scheduled'
-    elsif Time.now < finished_at
+    elsif Time.zone.now < finished_at
       'started'
-    elsif Time.now < reviewed_at
+    elsif Time.zone.now < reviewed_at
       'finished'
     end
   end
@@ -55,7 +55,7 @@ class TourDecorator < Draper::Decorator
           if finished_at
             h.concat h.t('tour.state.in_progress_for_next')
             h.concat ' '
-            h.concat h.distance_of_time_in_words(Time.now, finished_at)
+            h.concat h.distance_of_time_in_words(Time.zone.now, finished_at)
           else
             h.concat h.t('tour.state.in_progress')
           end
@@ -63,7 +63,7 @@ class TourDecorator < Draper::Decorator
           if reviewed_at
             h.concat h.t('tour.state.on_review_for_next')
             h.concat ' '
-            h.concat h.distance_of_time_in_words(Time.now, reviewed_at)
+            h.concat h.distance_of_time_in_words(Time.zone.now, reviewed_at)
           else
             h.concat h.t('tour.state.on_review')
           end

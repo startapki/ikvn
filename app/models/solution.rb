@@ -8,6 +8,6 @@ class Solution < ActiveRecord::Base
   validates :problem, uniqueness: { scope: :participation }
 
   def score_for(participation)
-    scores.find_or_initialize_by(participation_id: participation_id)
+    scores.find_or_initialize_by(participation_id: participation.id)
   end
 end
