@@ -1,21 +1,25 @@
-users = User.create!([{
+User.create!(
   email: 'admin@example.com',
   password: 'password',
   password_confirmation: 'password',
   confirmed_at: Time.now,
   role: User.roles[:admin]
-}, {
+)
+
+judge = User.create!(
   email: 'judge@example.com',
   password: 'password',
   password_confirmation: 'password',
   confirmed_at: Time.now,
   role: User.roles[:judge]
-}, {
+)
+
+user = User.create!(
   email: 'user@example.com',
   password: 'password',
   password_confirmation: 'password',
   confirmed_at: Time.now
-}])
+)
 
 League.create!([{
   name: 'Винни(ца) Пух',
@@ -77,22 +81,37 @@ tours = Tour.create!([{
 
 problems = Problem.create!([{
   content: 'Hello?',
-  tour: tours[2]
+  tour: tours[1]
 }, {
   content: 'World?',
-  tour: tours[2]
+  tour: tours[1]
 }, {
   content: 'Outdated?',
-  tour: tours[1]
+  tour: tours[2]
 }])
 
-participations = Participation.create!([{
+judge_participation = Participation.create!(
   season: seasons.first,
-  user: users.last
-}])
+  user: judge
+)
 
-Solution.create!([{
-  participation: participations.first,
-  problem: problems.last,
-  content: 'Solution!'
-}])
+user_participation = Participation.create!(
+  season: seasons.first,
+  user: user
+)
+
+solutions = problems.map.with_index do |problem, index|
+  Solution.create!(
+    participation: user_participation,
+    problem: problem,
+    content: "Solution #{index}!"
+  )
+end
+
+solutions.map do |solution|
+  Score.create!(
+    participation: judge_participation,
+    solution: solution,
+    value: 2
+  )
+end

@@ -11,11 +11,16 @@ ru:
   flash:
     not_authorized: 'Там абсолютно ничего интересного'
 
+  result:
+    user: 'Пользователь'
+    score: 'Результат'
+
   tournament:
     active_tour: 'Активный тур'
 
   tour:
     new: 'Новый Тур'
+    results: 'Результаты тура'
     state:
       draft: 'черновик'
       scheduled_in: 'запланирован через'
