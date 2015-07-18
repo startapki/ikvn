@@ -3,7 +3,13 @@ users = User.create!([{
   password: 'password',
   password_confirmation: 'password',
   confirmed_at: Time.now,
-  admin: true
+  role: User.roles[:admin]
+}, {
+  email: 'judge@example.com',
+  password: 'password',
+  password_confirmation: 'password',
+  confirmed_at: Time.now,
+  role: User.roles[:judge]
 }, {
   email: 'user@example.com',
   password: 'password',

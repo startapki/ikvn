@@ -12,7 +12,7 @@ class Ability
     can :read, Participation
 
     if user.persisted?
-      can :create, Participation, user_id: user.id, role: 'player'
+      can :create, Participation, user_id: user.id
     end
 
     if user.admin?

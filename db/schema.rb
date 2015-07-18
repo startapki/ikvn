@@ -23,14 +23,12 @@ ActiveRecord::Schema.define(version: 20150530155235) do
   add_index "leagues", ["name"], name: "index_leagues_on_name", unique: true
 
   create_table "participations", force: :cascade do |t|
-    t.string   "role",       default: "author"
-    t.integer  "user_id",                       null: false
-    t.integer  "season_id",                     null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "user_id",    null: false
+    t.integer  "season_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "participations", ["role", "user_id", "season_id"], name: "index_participations_on_role_and_user_id_and_season_id", unique: true
   add_index "participations", ["season_id"], name: "index_participations_on_season_id"
   add_index "participations", ["user_id"], name: "index_participations_on_user_id"
 
@@ -91,15 +89,15 @@ ActiveRecord::Schema.define(version: 20150530155235) do
   add_index "tours", ["season_id"], name: "index_tours_on_season_id"
 
   create_table "users", force: :cascade do |t|
-    t.boolean  "admin",                  default: false, null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.integer  "role",                   default: 0,  null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
