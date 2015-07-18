@@ -12,4 +12,8 @@ class Problem < ActiveRecord::Base
   def solutions?
     solutions.size > 0
   end
+
+  def solution_for(participation)
+    solutions.find_by(participation: @participation)
+  end
 end
