@@ -6,9 +6,7 @@ class Ability
 
     can :read, League
     can :read, Tournament
-
     can :read, Problem
-
     can :read, Participation
 
     can :create, Participation, user_id: user.id if user.persisted?
@@ -33,14 +31,14 @@ class Ability
       can :read, Season, Season.active, &:active?
       can :read, Tour, Tour.active, &:active?
       can :view_results, Tour do |tour|
-        tour.finished?
+        tour.reviewed?
       end
     end
 
     if user.judge?
       can :read, Solution
       can :manage, Score
-    elsif !user.admin?
+    elsif !user.admin? and user.persisted?
       can :manage, Solution do |solution|
         solution.problem.tour.solutionable?
       end

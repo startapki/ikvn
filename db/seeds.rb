@@ -79,17 +79,6 @@ tours = Tour.create!([{
   reviewed_at: nil
 }])
 
-problems = Problem.create!([{
-  content: 'Hello?',
-  tour: tours[1]
-}, {
-  content: 'World?',
-  tour: tours[1]
-}, {
-  content: 'Outdated?',
-  tour: tours[2]
-}])
-
 judge_participation = Participation.create!(
   season: seasons.first,
   user: judge
@@ -99,6 +88,13 @@ user_participation = Participation.create!(
   season: seasons.first,
   user: user
 )
+
+problems = tours.map.with_index do |tour, index|
+  Problem.create!(
+    content: Faker::Lorem.sentence,
+    tour: tour
+  )
+end
 
 solutions = problems.map.with_index do |problem, index|
   Solution.create!(

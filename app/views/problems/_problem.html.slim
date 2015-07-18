@@ -12,7 +12,7 @@
           	.well
               = actions_for solution, class: 'pull-right'
               = solution.content
-          -else
-            =link_to 'Answer', new_solution_path(participation_id: current_participation.id, problem_id: problem.id)
+          - else
+            = link_to 'Answer', new_solution_path(participation_id: current_participation.id, problem_id: problem.id)
         - if can? :manage, Score.new
           = render 'judgement_form', problem: problem

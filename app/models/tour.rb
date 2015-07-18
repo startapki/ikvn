@@ -12,10 +12,6 @@ class Tour < ActiveRecord::Base
     started_at.present? && started_at <= Time.zone.now
   end
 
-  def finished?
-    Time.zone.now >= reviewed_at
-  end
-
   def calculate_score_for(user)
     Score
     .joins(solution: [:participation, :problem])
@@ -25,11 +21,11 @@ class Tour < ActiveRecord::Base
   end
 
   def finished?
-    finished_at.present? && finished_at >= Time.zone.now
+    finished_at.present? && finished_at <= Time.zone.now
   end
 
   def reviewed?
-    reviewed_at.present? && reviewed_at >= Time.zone.now
+    reviewed_at.present? && reviewed_at <= Time.zone.now
   end
 
   def solutionable?
