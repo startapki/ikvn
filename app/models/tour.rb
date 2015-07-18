@@ -21,4 +21,16 @@ class Tour < ActiveRecord::Base
            participations: { user_id: user.id })
     .sum(:value)
   end
+
+  def finished?
+    finished_at.present? && finished_at >= Time.zone.now
+  end
+
+  def reviewed?
+    reviewed_at.present? && reviewed_at >= Time.zone.now
+  end
+
+  def solutionable?
+    finished? && !reviewed?
+  end
 end
