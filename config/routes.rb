@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :tournaments, only: [:edit, :update]
+
   resources :seasons, except: [:index, :show]
 
   resources :tours, except: :index
