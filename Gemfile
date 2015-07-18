@@ -49,6 +49,8 @@ group :development do
   gem 'coffeelint'
 
   gem 'letter_opener'
+
+  gem 'xray-rails'
 end
 
 group :development, :test do
