@@ -38,7 +38,7 @@ class Ability
     if user.judge?
       can :read, Solution
       can :manage, Score
-    elsif !user.admin? and user.persisted?
+    elsif !user.admin? && user.persisted?
       can :manage, Solution do |solution|
         solution.problem.tour.solutionable?
       end
