@@ -44,7 +44,10 @@ class ToursController < ApplicationController
   private
 
   def tour_params
-    params.require(:tour).permit(:name, :description, :season_id)
+    params
+    .require(:tour)
+    .permit(:name, :description, :season_id,
+            :started_at, :finished_at, :reviewed_at)
   end
 
   def prepare_breadcrumbs
