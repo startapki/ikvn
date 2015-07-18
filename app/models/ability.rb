@@ -11,9 +11,7 @@ class Ability
 
     can :read, Participation
 
-    if user.persisted?
-      can :create, Participation, user_id: user.id
-    end
+    can :create, Participation, user_id: user.id if user.persisted?
 
     if user.admin?
       can :update, League
