@@ -1,7 +1,7 @@
 .judgement
   - problem.solutions.each do |solution|
     =m solution.content
-    = form_for solution.score_for(current_participation), html: { class: 'form-horizontal' } do |f|
+    = bootstrap_form_for solution.score_for(current_participation), html: { class: 'form-horizontal' } do |f|
       = f.hidden_field :solution_id
       = f.hidden_field :participation_id
       .form-group
