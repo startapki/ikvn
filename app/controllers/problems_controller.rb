@@ -1,6 +1,8 @@
 class ProblemsController < ApplicationController
   load_and_authorize_resource except: [:index, :new]
 
+  decorates_assigned :problem
+
   before_action :prepare_breadcrumbs, only: :edit
 
   def new
