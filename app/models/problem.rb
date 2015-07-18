@@ -14,6 +14,6 @@ class Problem < ActiveRecord::Base
   end
 
   def solution_for(participation)
-    solutions.find_by(participation: @participation)
+    solutions.find_by(participation: participation)
   end
 end
