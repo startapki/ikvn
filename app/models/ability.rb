@@ -13,6 +13,7 @@ class Ability
 
     if user.persisted?
       can :create, Participation, user_id: user.id
+      can :create, Solution
     end
 
     if user.admin?
@@ -29,6 +30,7 @@ class Ability
       cannot :destroy, Problem, &:solutions?
 
       can :manage, Participation
+      can :read, Solution
     else
       can :read, Season, Season.active, &:active?
       can :read, Tour, Tour.active, &:active?
