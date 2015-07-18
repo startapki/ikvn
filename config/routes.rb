@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :problems, except: [:index, :show]
 
+  resources :scores, only: [:create, :update]
+
   resources :participations, only: [:create, :update]
 
   resources :solutions, only: [:create, :update, :new]

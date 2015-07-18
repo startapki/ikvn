@@ -35,5 +35,10 @@ class Ability
       can :read, Season, Season.active, &:active?
       can :read, Tour, Tour.active, &:active?
     end
+
+    if user.judge?
+      can :read, Solution
+      can :manage, Score
+    end
   end
 end
