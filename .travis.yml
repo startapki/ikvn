@@ -1,4 +1,7 @@
 language: ruby
-install: bundle install
+install:
+  - bundle install --path vendor/bundle
 script:
   - bundle exec rubocop
+notifications:
+  email: false
