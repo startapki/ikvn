@@ -5,6 +5,8 @@ class ProblemsController < ApplicationController
 
   before_action :prepare_breadcrumbs, only: :edit
 
+  helper_method :current_participation
+
   def new
     @problem = Problem.new(tour_id: params[:tour_id])
     authorize! :new, @problem
@@ -37,6 +39,12 @@ class ProblemsController < ApplicationController
   end
 
   private
+
+  def current_participation
+    @current_participation ||= current_user_participations.find_by(
+      season: @problem.try(:tour).try(:season)
+    ) if @problem.present?
+  end
 
   def problem_params
     params.require(:problem).permit(:tour_id, :content)

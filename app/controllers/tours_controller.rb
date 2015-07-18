@@ -5,6 +5,8 @@ class ToursController < ApplicationController
 
   before_action :prepare_breadcrumbs, only: [:show, :edit]
 
+  helper_method :current_participation
+
   def show
     @participation = Participation.find_or_initialize_by(user: current_user,
                                                          season: @tour.season)
@@ -42,6 +44,12 @@ class ToursController < ApplicationController
   end
 
   private
+
+  def current_participation
+    @current_participation ||= current_user_participations.find_by(
+      season: @tour.try(:season)
+    ) if @tour.present?
+  end
 
   def tour_params
     params

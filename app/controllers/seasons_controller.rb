@@ -5,6 +5,8 @@ class SeasonsController < ApplicationController
 
   before_action :prepare_breadcrumbs, only: :edit
 
+  helper_method :current_participation
+
   def new
     @season = Season.new(tournament_id: params[:tournament_id])
     authorize! :new, @season
@@ -37,6 +39,12 @@ class SeasonsController < ApplicationController
   end
 
   private
+
+  def current_participation
+    @current_participation ||= current_user_participations.find_by(
+      season: @season
+    ) if @season.present?
+  end
 
   def season_params
     params.require(:season).permit(:name, :description, :tournament_id)
