@@ -16,4 +16,8 @@
 !/log/.keep
 /tmp
 
+# Database config
 config/database.yml
+
+# Bundle
+/vendor/bundle

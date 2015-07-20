@@ -1,4 +1,8 @@
 language: ruby
+before_install:
+  - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
+install:
+  - bundle install --path vendor/bundle
 script:
   - bundle exec rubocop
 notifications:
