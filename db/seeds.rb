@@ -89,7 +89,7 @@ user_participation = Participation.create!(
   user: user
 )
 
-problems = tours.map.with_index do |tour, index|
+problems = tours.map do |tour|
   Problem.create!(
     content: Faker::Lorem.sentence,
     tour: tour
