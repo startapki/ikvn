@@ -65,3 +65,9 @@ ru:
     sign_up: 'Зарегистрироваться'
     logout: 'Выйти'
     edit_profile: 'Редактировать профиль'
+
+  user_mailer:
+    tour_started:
+      subject: 'Тур стартовал'
+    tour_finished:
+      subject: 'Тур готов для оценивания'

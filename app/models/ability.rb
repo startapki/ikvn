@@ -40,6 +40,9 @@ class Ability
     if user.judge?
       can :read, Solution
       can :manage, Score
+      can :judge, Tour do |tour|
+        tour.finished? && !tour.reviewed?
+      end
     elsif !user.admin? && user.persisted?
       can :manage, Solution do |solution|
         solution.problem.tour.solutionable?
