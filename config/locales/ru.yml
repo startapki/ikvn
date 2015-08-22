@@ -43,10 +43,28 @@ ru:
     new: 'Новая задача'
     name: 'Задача №%{position}'
 
+  user:
+    users: 'Пользователи'
+    email: 'Электронная почта'
+    role: 'Роль'
+    roles:
+      user: 'Пользователь'
+      judge: 'Судья'
+      admin: 'Админ'
+    actions: 'Действия'
+
   model:
     created: 'Успешно создано.'
     updated: 'Успешно обновлено.'
     destroyed: 'Успешно удалено.'
+    not_updated: 'Во время обновления возникли ошибки.'
+
+  nav:
+    users: 'Пользователи'
+    sign_in: 'Войти'
+    sign_up: 'Зарегистрироваться'
+    logout: 'Выйти'
+    edit_profile: 'Редактировать профиль'
 
   user_mailer:
     tour_started:

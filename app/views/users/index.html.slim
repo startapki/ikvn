@@ -1,0 +1,21 @@
+#users
+  .jumbotron
+    h1
+      =t 'user.users'
+
+  table.table
+    thead
+      tr
+        th
+          =t 'user.email'
+        th
+          =t 'user.role'
+    tbody
+      - users.each do |user|
+        tr
+          td
+            = user.email
+          td
+            = user.role
+
+  = will_paginate @users, renderer: BootstrapPagination::Rails

@@ -1,0 +1,17 @@
+.btn-group
+  .role-button
+    display: inline-block
+
+    &:first-child:not(:last-child)
+      input[type=submit]
+        border-top-right-radius: 0
+        border-bottom-right-radius: 0
+
+    &:last-child:not(:first-child)
+      input[type=submit]
+        border-top-left-radius: 0
+        border-bottom-left-radius: 0
+
+    &:not(:first-child):not(:last-child)
+      input[type=submit]
+        border-radius: 0

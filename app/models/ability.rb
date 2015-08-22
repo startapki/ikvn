@@ -27,6 +27,8 @@ class Ability
 
       can :manage, Participation
       can :read, Solution
+
+      can :manage, User
     else
       can :read, Season, Season.active, &:active?
       can :read, Tour, Tour.active, &:active?
