@@ -10,18 +10,14 @@ class TourDecorator < Draper::Decorator
   def state
     if started_at.nil?
       'draft'
-    elsif started_at <= Time.zone.now && finished_at.nil? && reviewed_at.nil?
+    elsif active? && !finished? && !reviewed?
       'started'
-    elsif finished_at && finished_at <= Time.zone.now && reviewed_at.nil?
+    elsif active? && finished? && !reviewed?
       'finished'
-    elsif reviewed_at && reviewed_at <= Time.zone.now
+    elsif active? && finished? && reviewed?
       'completed'
-    elsif Time.zone.now < started_at
+    else
       'scheduled'
-    elsif Time.zone.now < finished_at
-      'started'
-    elsif Time.zone.now < reviewed_at
-      'finished'
     end
   end
 
