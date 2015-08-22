@@ -29,6 +29,6 @@ class Tour < ActiveRecord::Base
   end
 
   def solutionable?
-    finished? && !reviewed?
+    active? && !finished? && !reviewed?
   end
 end
