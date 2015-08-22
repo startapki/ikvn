@@ -12,9 +12,9 @@ class TourDecorator < Draper::Decorator
       'draft'
     elsif started_at <= Time.zone.now && finished_at.nil? && reviewed_at.nil?
       'started'
-    elsif finished_at <= Time.zone.now && reviewed_at.nil?
+    elsif finished_at && finished_at <= Time.zone.now && reviewed_at.nil?
       'finished'
-    elsif reviewed_at <= Time.zone.now
+    elsif reviewed_at && reviewed_at <= Time.zone.now
       'completed'
     elsif Time.zone.now < started_at
       'scheduled'
