@@ -14,5 +14,5 @@
               = solution.content
           - else
             = link_to 'Answer', new_solution_path(participation_id: current_participation.id, problem_id: problem.id)
-        - if can? :manage, Score.new
+        - if can? :judge, problem.tour
           = render 'judgement_form', problem: problem
