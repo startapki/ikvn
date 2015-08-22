@@ -21,6 +21,7 @@ class Ability
       can :manage, Tour
       can :view_results, Tour
       cannot :destroy, Tour, &:active?
+      cannot :judge, Tour
 
       can :manage, Problem
       cannot :destroy, Problem, &:solutions?
