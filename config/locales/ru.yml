@@ -47,3 +47,9 @@ ru:
     created: 'Успешно создано.'
     updated: 'Успешно обновлено.'
     destroyed: 'Успешно удалено.'
+
+  user_mailer:
+    tour_started:
+      subject: 'Тур стартовал'
+    tour_finished:
+      subject: 'Тур готов для оценивания'
