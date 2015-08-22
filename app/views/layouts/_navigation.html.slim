@@ -20,17 +20,21 @@ nav.navbar.navbar-default role="navigation"
               => current_user.email
               b.caret
             ul.dropdown-menu
+              - if current_user.admin?
+                li
+                  = link_to users_path
+                    =t 'nav.users'
               li
                 = link_to edit_user_registration_path
-                  | Edit profile
+                  =t 'nav.edit_profile'
               li.divider
               li
                 = link_to destroy_user_session_path, method: :delete
-                  | Logout
+                  =t 'nav.logout'
         - else
           li
             = link_to new_user_session_path
-              | Sign in
+              =t 'nav.sign_in'
           li
             = link_to new_user_registration_path
-              | Sign up
+              =t 'nav.sign_up'

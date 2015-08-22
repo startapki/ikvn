@@ -19,5 +19,7 @@ Rails.application.routes.draw do
 
   resources :solutions, except: [:index, :show]
 
+  resources :users, only: [:index, :update]
+
   root to: 'tournaments#show'
 end
