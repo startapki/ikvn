@@ -7,12 +7,12 @@
     .panel-body
       .content
         =m problem.content
-        - if can? :create, Solution.new(problem: problem)
-          - if solution = problem.solution_for(current_participation)
-          	.well
+        - if solution = problem.solution_for(current_participation)
+          - if can? :update, solution
+            .well
               = actions_for solution, class: 'pull-right'
               = solution.content
-          - else
-            = link_to 'Answer', new_solution_path(participation_id: current_participation.id, problem_id: problem.id)
+        - elsif can? :create, Solution.new(problem: problem)
+          = link_to 'Answer', new_solution_path(participation_id: current_participation.id, problem_id: problem.id)
         - if can? :judge, problem.tour
           = render 'judgement_form', problem: problem
