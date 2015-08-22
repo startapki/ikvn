@@ -5,5 +5,3 @@
 #= require bootstrap-sprockets
 #= require bootstrap-markdown-bundle
 #= require moment
-#= require bootstrap-datetimepicker
-#= require_tree ./application/
