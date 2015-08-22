@@ -7,6 +7,9 @@ class Tour < ActiveRecord::Base
 
   validates :season, presence: true
   validates :name, uniqueness: { scope: :season }, allow_nil: true
+  validate :finished_at_greater_than_started_at,
+           :reviewed_at_greater_than_finished_at,
+           :reviewed_at_greater_than_started_at
 
   def active?
     started_at.present? && started_at <= Time.zone.now
@@ -30,5 +33,27 @@ class Tour < ActiveRecord::Base
 
   def solutionable?
     finished? && !reviewed?
+  end
+
+  private
+
+  def finished_at_greater_than_started_at
+    greater_than :finished_at, :started_at
+  end
+
+  def reviewed_at_greater_than_finished_at
+    greater_than :reviewed_at, :finished_at
+  end
+
+  def reviewed_at_greater_than_started_at
+    greater_than :reviewed_at, :started_at
+  end
+
+  def greater_than(first, second)
+    first_value = self[first.to_sym]
+    second_value = self[second.to_sym]
+    if first_value.present? && second_value.present? && first_value < second_value
+      errors.add(first.to_sym, "should be greater than #{second}")
+    end
   end
 end
