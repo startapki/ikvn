@@ -1,8 +1,8 @@
 = bootstrap_form_for tour do |f|
   = f.text_field :name
-  = f.datetime_select :started_at
-  = f.datetime_select :finished_at
-  = f.datetime_select :reviewed_at
+  = f.datetime_select :started_at, include_blank: true
+  = f.datetime_select :finished_at, include_blank: true
+  = f.datetime_select :reviewed_at, include_blank: true
   = f.text_area :description, data: { provide: 'markdown' }
   = f.hidden_field :season_id
   = f.submit
