@@ -30,7 +30,7 @@ class Ability
     end
   end
 
-  def admin_can(_user)
+  def admin_can(user)
     can :update, League
     can :update, Tournament
 
@@ -46,6 +46,8 @@ class Ability
     cannot :destroy, Problem, &:solutions?
 
     can :manage, Participation
+    cannot :manage, Participation, user_id: user.id
+
     can :read, Solution
 
     can :manage, User
