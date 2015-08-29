@@ -23,7 +23,7 @@ class ToursController < ApplicationController
   end
 
   def create
-    if @tour.save!
+    if @tour.save
       redirect_to @tour, notice: t('model.created')
     else
       render :new

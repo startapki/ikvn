@@ -17,7 +17,7 @@ class ProblemsController < ApplicationController
   end
 
   def create
-    if @problem.save!
+    if @problem.save
       redirect_to @problem.tour, notice: t('model.created')
     else
       render :new
