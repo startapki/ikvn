@@ -2,6 +2,7 @@ User.create!(
   email: 'admin@example.com',
   password: 'password',
   password_confirmation: 'password',
+  name: Faker::Name.name,
   confirmed_at: Time.zone.now,
   role: User.roles[:admin]
 )
@@ -10,6 +11,7 @@ judge = User.create!(
   email: 'judge@example.com',
   password: 'password',
   password_confirmation: 'password',
+  name: Faker::Name.name,
   confirmed_at: Time.zone.now,
   role: User.roles[:judge]
 )
@@ -17,6 +19,7 @@ judge = User.create!(
 user = User.create!(
   email: 'user@example.com',
   password: 'password',
+  name: Faker::Name.name,
   password_confirmation: 'password',
   confirmed_at: Time.zone.now
 )
