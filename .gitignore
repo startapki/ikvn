@@ -21,3 +21,6 @@ config/database.yml
 
 # Bundle
 /vendor/bundle
+
+# Rspec
+/spec/examples.txt
