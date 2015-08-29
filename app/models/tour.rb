@@ -5,7 +5,7 @@ class Tour < ActiveRecord::Base
 
   scope :active, -> { where('started_at <= ?', Time.zone.now) }
 
-  validates :season, presence: true
+  validates :name, :season, presence: true
   validates :name, uniqueness: { scope: :season }, allow_nil: true
   validate :finished_at_greater_than_started_at,
            :reviewed_at_greater_than_finished_at,
