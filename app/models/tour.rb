@@ -3,12 +3,12 @@ class Tour < ActiveRecord::Base
 
   has_many :problems, dependent: :destroy
 
-  scope :active, -> { where('started_at <= ?', Time.zone.now) }
+  scope :active, -> { where('tours.started_at <= ?', Time.zone.now) }
 
   scope :solutionable, lambda {
-    where('started_at <= ?', Time.zone.now)
-    .where('finished_at >= ? OR finished_at IS NULL', Time.zone.now)
-    .where('reviewed_at >= ? OR reviewed_at IS NULL', Time.zone.now)
+    where('tours.started_at <= ?', Time.zone.now)
+    .where('tours.finished_at >= ? OR tours.finished_at IS NULL', Time.zone.now)
+    .where('tours.reviewed_at >= ? OR tours.reviewed_at IS NULL', Time.zone.now)
   }
 
   validates :name, :season, presence: true
