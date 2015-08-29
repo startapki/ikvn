@@ -7,7 +7,7 @@ class SolutionsController < ApplicationController
   end
 
   def create
-    if @solution.save!
+    if @solution.save
       redirect_to current_tour, notice: t('model.created')
     else
       render :new

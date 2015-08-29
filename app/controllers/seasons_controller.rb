@@ -17,7 +17,7 @@ class SeasonsController < ApplicationController
   end
 
   def create
-    if @season.save!
+    if @season.save
       redirect_to root_path, notice: t('model.created')
     else
       render :new

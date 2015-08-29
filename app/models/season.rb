@@ -6,7 +6,7 @@ class Season < ActiveRecord::Base
 
   scope :active, -> { joins(:tours).merge(Tour.active).uniq }
 
-  validates :tournament, presence: true
+  validates :name, :tournament, presence: true
   validates :name, uniqueness: { scope: :tournament }, allow_nil: true
 
   def active?

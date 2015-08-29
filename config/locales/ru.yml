@@ -71,3 +71,6 @@ ru:
       subject: 'Тур стартовал'
     tour_finished:
       subject: 'Тур готов для оценивания'
+
+  validate:
+    greater_than_another_field: 'должно быть больше чем %{field}'
