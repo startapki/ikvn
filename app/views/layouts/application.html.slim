@@ -5,6 +5,9 @@ html
       | iKvn
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon'
+    = favicon_link_tag 'apple-touch-icon-precomposed.png', rel: 'apple-touch-icon-precomposed'
+    = favicon_link_tag 'ikvn.png', type: 'image/png', rel: 'icon'
     = csrf_meta_tags
   body
     = render partial: 'layouts/navigation'
