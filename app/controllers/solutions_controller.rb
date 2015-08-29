@@ -1,9 +1,11 @@
 class SolutionsController < ApplicationController
   load_and_authorize_resource except: [:index, :new]
 
+  decorates_assigned :solution
+
   def new
-    @solution = Solution.new problem_id: params[:problem_id],
-                             participation_id: params[:participation_id]
+    @solution = Solution.new(problem_id: params[:problem_id],
+                             participation_id: params[:participation_id])
   end
 
   def create

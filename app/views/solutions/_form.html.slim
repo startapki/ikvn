@@ -1,3 +1,12 @@
+.problem
+  .panel.panel-default
+    .panel-heading
+      = solution.problem.name
+
+    .panel-body
+      .content
+        =m solution.problem.content
+
 = bootstrap_form_for solution do |f|
   = f.hidden_field :participation_id
   = f.hidden_field :problem_id
