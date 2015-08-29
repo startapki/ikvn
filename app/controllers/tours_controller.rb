@@ -42,6 +42,8 @@ class ToursController < ApplicationController
     @tour.destroy
 
     redirect_to root_url, notice: t('model.destroyed')
+  rescue StandardError
+    redirect_to root_url, alert: t('model.not_destroyed')
   end
 
   def results
