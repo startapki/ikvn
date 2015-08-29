@@ -52,8 +52,12 @@ class Tour < ActiveRecord::Base
   def greater_than(first, second)
     first_value = self[first.to_sym]
     second_value = self[second.to_sym]
-    if first_value.present? && second_value.present? && first_value < second_value
-      errors.add(first.to_sym, "should be greater than #{second}")
-    end
+
+    return unless first_value.present? && second_value.present?
+    return unless first_value < second_value
+
+    errors.add(first.to_sym,
+               I18n.t('validate.greater_than_another_field',
+                      field: self.class.human_attribute_name(second)))
   end
 end
