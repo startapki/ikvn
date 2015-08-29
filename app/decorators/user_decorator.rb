@@ -16,7 +16,8 @@ class UserDecorator < Draper::Decorator
       h.concat f.hidden_field(:id)
       h.concat f.hidden_field(:role, value: role)
       h.concat f.submit(h.t("user.roles.#{role}"),
-                        class: "btn btn-primary #{'active' if active}")
+                        class: "btn btn-primary #{'active' if active}",
+                        disabled: source == h.current_user)
     end
   end
 end

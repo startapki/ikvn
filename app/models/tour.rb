@@ -5,6 +5,12 @@ class Tour < ActiveRecord::Base
 
   scope :active, -> { where('started_at <= ?', Time.zone.now) }
 
+  scope :solutionable, lambda {
+    where('started_at <= ?', Time.zone.now)
+    .where('finished_at >= ? OR finished_at IS NULL', Time.zone.now)
+    .where('reviewed_at >= ? OR reviewed_at IS NULL', Time.zone.now)
+  }
+
   validates :name, :season, presence: true
   validates :name, uniqueness: { scope: :season }, allow_nil: true
   validate :finished_at_greater_than_started_at,
