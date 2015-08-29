@@ -10,7 +10,10 @@ class ScoresController < ApplicationController
   def update
     @score.update(score_params)
 
-    redirect_to @score.solution.problem.tour
+    respond_to do |format|
+      format.html { redirect_to @score.solution.problem.tour }
+      format.js
+    end
   end
 
   private

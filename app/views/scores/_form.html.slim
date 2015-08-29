@@ -1,9 +1,10 @@
-= bootstrap_form_for score, html: { class: 'form-horizontal' } do |f|
+= bootstrap_form_for score, html: { class: 'form-horizontal' }, remote: true do |f|
   = f.hidden_field :solution_id
   = f.hidden_field :participation_id
 
   .form-group
     - (0...4).each do |i|
       = f.label "value_#{i}", class: 'radio-inline'
-        = f.radio_button :value, i, onclick: "this.form.submit();"
+        = f.radio_button :value, i, onclick: "$(this.form).trigger('submit.rails');"
         = i
+    span class="glyphicon glyphicon-ok" id="score_saved_#{score.id}" aria-hidden="true" style="display: none"

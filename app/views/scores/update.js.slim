@@ -1,0 +1,6 @@
+|
+  $("#score_saved_#{@score.id}").hide(100, function() {
+    $("#score_saved_#{@score.id}").show(100, function() {
+      setTimeout(function() { $("#score_saved_#{@score.id}").hide(100) }, 1000)
+    })
+  })
