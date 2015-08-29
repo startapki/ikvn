@@ -17,7 +17,7 @@ nav.navbar.navbar-default role="navigation"
         - if current_user.present?
           li.dropdown
             a.dropdown-toggle href="" data-toggle="dropdown"
-              => current_user.email
+              => current_user.name
               b.caret
             ul.dropdown-menu
               - if current_user.admin?

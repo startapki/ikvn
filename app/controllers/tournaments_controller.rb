@@ -10,8 +10,8 @@ class TournamentsController < ApplicationController
                             .first
 
     @seasons = @tournament.seasons
+                          .order_by_earliest_tour
                           .accessible_by(current_ability, :read)
-                          .order(created_at: :desc)
 
     prepare_breadcrumbs
   end
