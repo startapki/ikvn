@@ -57,7 +57,16 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.3'
+  gem 'email_spec'
+
   gem 'spring'
+  gem 'spring-commands-rspec'
+
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+
+  gem 'simplecov', require: false
 end
 
 group :production do
