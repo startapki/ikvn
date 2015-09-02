@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   include AuthenticationRedirect
+  include DeviseConfiguration
 
   rescue_from CanCan::AccessDenied do
     redirect_to root_url, alert: t('flash.not_authorized')
@@ -14,8 +15,7 @@ class ApplicationController < ActionController::Base
     Participation.where(user: current_user)
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:account_update) << :wants_email
-    devise_parameter_sanitizer.for(:account_update) << :name
+  def additional_devise_permitted_params
+    { account_update: [:name, :wants_email], sign_up: [:name] }
   end
 end
