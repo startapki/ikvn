@@ -3,7 +3,10 @@ before_install:
   - "echo 'gem: --no-ri --no-rdoc' > ~/.gemrc"
 install:
   - bundle install --path vendor/bundle
+  - cp -n config/database.yml.example config/database.yml
+  - rake db:setup
 script:
   - bundle exec rubocop
+  - bundle exec rake spec
 notifications:
   email: false
