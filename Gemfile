@@ -67,6 +67,8 @@ group :development, :test do
   gem 'factory_girl_rails'
 
   gem 'simplecov', require: false
+
+  gem 'codeclimate-test-reporter', require: false
 end
 
 group :production do

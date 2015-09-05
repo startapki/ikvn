@@ -1,5 +1,7 @@
-require 'simplecov'
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
 
+require 'simplecov'
 SimpleCov.start 'rails' do
   add_group 'Decorators', 'app/decorators'
 

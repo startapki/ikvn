@@ -10,3 +10,8 @@ script:
   - bundle exec rake spec
 notifications:
   email: false
+addons:
+  code_climate:
+    repo_token: -paste-token-here-
+after_script:
+  - vendor/bin/test-reporter
