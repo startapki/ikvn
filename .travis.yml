@@ -10,3 +10,4 @@ script:
   - bundle exec rake spec
 notifications:
   email: false
+  slack: startapki:F4xc9JrzHu62jXaNdYZkfLvN
